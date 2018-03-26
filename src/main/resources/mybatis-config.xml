@@ -6,6 +6,9 @@
     <settings>
         <!-- 指定使用LOG4J输出日志 -->
         <setting name="logImpl" value="LOG4J"/>
+
+        <!-- 开启驼峰命名和下划线命名转化 -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
 
     <typeAliases>
@@ -25,6 +28,14 @@
     </environments>
 
     <mappers>
+        <package name="com.reus.mybatis.mapper"/>
+        <!--
         <mapper resource="mapper/CountryMapper.xml"/>
+        <mapper resource="mapper/UserMapper.xml"/>
+        <mapper resource="mapper/RoleMapper.xml"/>
+        <mapper resource="mapper/PrivilegeMapper.xml"/>
+        <mapper resource="mapper/UserRoleMapper.xml"/>
+        <mapper resource="mapper/RolePrivilegeMapper.xml"/>
+        -->
     </mappers>
 </configuration>
