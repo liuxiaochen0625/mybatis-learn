@@ -33,7 +33,7 @@ public class BaseMapperTest {
     }
 
     protected SqlSession getSession(){
-        return factory.openSession();
+        return factory.openSession(true);
     }
 
 }

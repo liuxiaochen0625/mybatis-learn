@@ -14,9 +14,14 @@
         <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
     </resultMap>
     -->
-    
+
     <select id="selectById" resultType="SysUser">
         select * FROM sys_user WHERE id = #{id}
     </select>
-    
+
+    <insert id="insertUser" parameterType="com.reus.mybatis.model.SysUser" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO sys_user(id,user_name,user_password,user_email,user_info,head_img,create_time)
+        VALUES (#{id},#{userName},#{userPassword},#{userEmail},#{userInfo},#{headImg,jdbcType=BLOB},#{createTime,jdbcType=TIMESTAMP})
+    </insert>
+
 </mapper>

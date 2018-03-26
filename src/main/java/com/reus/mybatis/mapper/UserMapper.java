@@ -12,6 +12,18 @@ import com.reus.mybatis.model.SysUser;
  */
 public interface UserMapper {
 
+    /**
+     * 根据ID查询用户
+     * @param id
+     * @return
+     */
     SysUser selectById(Long id);
+
+    /**
+     * 新增用户
+     * @param sysUser
+     * @return
+     */
+    int insertUser(SysUser sysUser);
 
 }
