@@ -17,7 +17,7 @@ public class Dept {
 
     private String   deptname;
 
-    private Set<Emp> emp = new HashSet<Emp>();
+    private Set<Emp> emp = new HashSet<>();
 
     /**
      * Getter method for property <tt>deptno</tt>.
