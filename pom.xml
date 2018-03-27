@@ -32,6 +32,12 @@
             <artifactId>mybatis-ehcache</artifactId>
             <version>1.0.3</version>
         </dependency>
+        <!-- 动态代理机制mybatis懒加载时，会使用到。 -->
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>3.2.5</version>
+        </dependency>
 
 
         <!-- 数据库驱动 -->
