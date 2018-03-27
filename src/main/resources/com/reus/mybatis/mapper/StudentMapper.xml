@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/ /DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.reus.mybatis.mapper.StudentMapper">
+
+    <resultMap type="Student" id="Student_Teacher">
+        <id column="sid" property="sid"/>
+        <result column="name" property="name"/>
+        <result column="age" property="age"/>
+
+        <collection property="teachers" ofType="Teacher">
+            <!--  property表示集合属性,ofType表示集合类型 -->
+            <id column="tid" property="tid"/>
+            <result column="tname" property="tname"/>
+            <result column="subject" property="subject"/>
+        </collection>
+        <!--
+        association的使用和collection类似,多用于一对一映射或者一对多一方的resultMap的输出映射
+                <association property=""></association> -->
+    </resultMap>
+
+    <!-- 懒加载 ,由于是多对多,所以需要加查询中间表,所以,不能直接使用单表id查询-->
+    <select id="selectStudentLazy" parameterType="int" resultType="Student" >
+
+        <![CDATA[
+          SELECT student.* FROM student,t_s
+           WHERE
+           t_s.sid=student.sid AND t_s.tid=#{value}
+          ]]>
+
+    </select>
+
+    <!-- 多对多级联查询,其实个人感觉,mybatis的映射关系主要体现在数据库设计和sql语法上面如果数据库基础知识过硬,没必要花费时间去学习 -->
+    <select id="select_student_teacher" parameterType="int" resultMap="Student_Teacher">
+        <![CDATA[
+       SELECT tt.*,teacher.`tname`,teacher.`subject` FROM teacher,
+    (SELECT student.*,t_s.`tid` FROM student,t_s WHERE student.`sid`=t_s.`sid`) tt
+    WHERE
+    tt.tid=teacher.`tid`  AND sid=#{value} ]]>
+    </select>
+
+</mapper>

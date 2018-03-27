@@ -4,6 +4,8 @@
  */
 package com.reus.mybatis.model;
 
+import com.reus.mybatis.type.Enabled;
+
 import java.util.Date;
 
 /**
@@ -20,7 +22,7 @@ public class SysRole {
     private String  roleName;
 
     /** 是否可用 */
-    private Integer enabled;
+    private Enabled enabled;
 
     /** 创建者 */
     private Long    createBy;
@@ -69,7 +71,7 @@ public class SysRole {
      *
      * @return property value of enabled
      */
-    public Integer getEnabled() {
+    public Enabled getEnabled() {
         return enabled;
     }
 
@@ -78,7 +80,7 @@ public class SysRole {
      *
      * @param enabled value to be assigned to property enabled
      */
-    public void setEnabled(Integer enabled) {
+    public void setEnabled(Enabled enabled) {
         this.enabled = enabled;
     }
 

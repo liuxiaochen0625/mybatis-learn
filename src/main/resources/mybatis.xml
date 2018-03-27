@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--lazyLoadingEnabled：设置懒加载，默认为false。如果为false：则所有相关联的都会被初始化加载。
+     aggressiveLazyLoading：默认为true。当设置为true时，懒加载的对象可能被任何懒属性全部加载；否则，每个属性按需加载。 -->
+    <settings>
+        <!-- 打开延迟加载的开关 -->
+        <setting name="lazyLoadingEnabled" value="true" />
+        <!-- 将积极加载改为消息加载即按需加载 -->
+        <setting name="aggressiveLazyLoading" value="false" />
+        <setting name="lazyLoadTriggerMethods" value=""/>
+    </settings>
+    <!-- 配置别名 -->
+    <typeAliases>
+        <!--方式一: 按类型名定制别名 -->
+        <!--方式二: 拿当前指定包下的简单类名作为别名 -->
+        <package name="com.reus.mybatis.model" />
+    </typeAliases>
+    <environments default="mysql">
+
+        <environment id="mysql">
+            <!-- 使用jdbc的事务 -->
+            <transactionManager type="JDBC" />
+            <!-- 使用自带的连接池 -->
+            <dataSource type="POOLED">
+                <!-- 我用的Oracle数据库 -->
+                <property name="driver" value="com.mysql.jdbc.Driver" />
+                <property name="url" value="jdbc:mysql://localhost:3306/mybatis_learn" />
+                <property name="username" value="root" />
+                <property name="password" value="mysql" />
+            </dataSource>
+        </environment>
+
+    </environments>
+    <mappers>
+        <mapper resource="com/reus/mybatis/mapper/DeptMapper.xml" />
+    </mappers>
+</configuration>
